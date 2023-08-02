@@ -1,4 +1,4 @@
-add_library(STM32F1 STATIC 
+add_library(opencm3_STM32F1 STATIC 
     lib/stm32/f1/adc.c
     lib/stm32/f1/rtc.c
     lib/stm32/f1/timer.c
@@ -35,17 +35,28 @@ add_library(STM32F1 STATIC
     lib/cm3/sync.c
     lib/cm3/systick.c
     lib/cm3/vector.c
+    
+    
+    lib/usb/usb.c
+    
+    lib/usb/usb_dwc_common.c
+    lib/usb/usb_dwc_common.h
+    lib/usb/usb_control.c
+    lib/usb/usb_standard.c
+    lib/usb/usb_msc.c
+    lib/usb/usb_private.h
+    lib/usb/usb_f107.c
+    lib/usb/usb_midi.c
+    lib/usb/usb_hid.c
+
+    lib/usb/usb_audio.c
+    lib/usb/usb_cdc.c
+
+    lib/stm32/can.c
+    lib/stm32/st_usbfs_v1.c
 )
 
-target_include_directories(STM32F1 PUBLIC
-    include
-)
-
-target_compile_definitions(STM32F1 PUBLIC
-    -DSTM32F1
-)
-
-target_compile_options(STM32F1 PRIVATE
+target_compile_options(opencm3_STM32F1 PRIVATE
     -Wextra
     -Wimplicit-function-declaration
     -Wmissing-prototypes
@@ -53,4 +64,5 @@ target_compile_options(STM32F1 PRIVATE
     -Wshadow                                      
     -Wstrict-prototypes
     -Wundef
+    -Wno-packed
 )
